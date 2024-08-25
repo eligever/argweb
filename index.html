@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Binary Display</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0; /* Light gray background */
+        }
+
+        .binary-container {
+            border: 2px solid black;
+            padding: 10px;
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 16px;
+            background-color: white;
+            display: inline-block;
+        }
+
+        .binary-container span {
+            display: inline-block;
+            transition: transform 0.3s ease;
+        }
+
+        .dance {
+            animation: dance 0.5s infinite alternate;
+        }
+
+        @keyframes dance {
+            from {
+                transform: translateY(0) rotate(0deg);
+            }
+            to {
+                transform: translateY(-10px) rotate(10deg) scale(1.2);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="binary-container">
+        <span>01111001</span> <span>01110101</span> <span>01101110</span> <span>01101110</span> <span>01100001</span><br>
+        <span>00100000</span> <span>01101001</span> <span>01110011</span> <span>00100000</span><br>
+        <span>01100001</span> <span>01111001</span>
+    </div>
+
+    <script>
+        // Add event listener to each span element
+        const binaryNumbers = document.querySelectorAll('.binary-container span');
+
+        binaryNumbers.forEach(span => {
+            span.addEventListener('click', () => {
+                span.classList.add('dance');
+                setTimeout(() => {
+                    span.classList.remove('dance');
+                }, 1000); // Remove the class after 1 second
+            });
+        });
+    </script>
+</body>
+</html>
